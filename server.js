@@ -17,4 +17,7 @@ mongoose
 
 app.use('/api/items', items)
 
-app.listen(port), () => console.log(`Server started on ${port}`);
+app.listen(port, () => {
+    console.log(`server up and running on port ${port}`);
+})
+// app.listen(port), () => console.log(`Server started on ${port}`);
