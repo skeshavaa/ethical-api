@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const items = require('./models/items')
+const apiRoute = require('./routes/api')
 
 const app = express();
 
@@ -16,6 +17,7 @@ mongoose
     const port = process.env.PORT || 5000;
 
 app.use('/api/items', items)
+app.use('/',apiRoute)
 
 app.listen(port, () => {
     console.log(`server up and running on port ${port}`);
