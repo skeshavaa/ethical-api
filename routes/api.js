@@ -20,5 +20,17 @@ router.get('/getAll', (req, res) => {
 
 });
 
+router.post('/addData', (req,res) => {
+    Item.findOne({token:req.body.token, _id:req.body._id}, (err,doc)=> {
+        const arr = [];
+        if(doc){
+            return res.json(doc.data)
+        }else{
+            console.log("not matched"); 
+            return res.send('NOT MATCHED')
+        }
+    })
+})
+
 
 module.exports = router;
