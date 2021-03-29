@@ -19,7 +19,19 @@ router.post('/CreateForm', (req, res) => {
        data: []
    })
    var obj;
-   newForm.save().then((item) => res.json({"token": item.token, "FormID": item._id}));
+   newForm.save().then((item) => res.json({"token": item.token, "formID": item._id}));
+})
+
+router.delete('/DeleteForm', (req, res) => {
+    Item.findById(req.body.formID).then((item) => {
+        if (item.token != req.body.token){
+            res.json({token: "Invalid Token"})
+        }else{
+            item.remove().then(() => {
+                res.json({success: true})
+            })
+        }
+    }).catch(() => res.json({msg: "Form not found!"}))
 })
 
 module.exports = router;
