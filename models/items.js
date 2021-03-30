@@ -5,6 +5,10 @@ const ItemSchema = new Schema({
     data: {
         type: [Object],
         required: true
+    },
+    token: {
+        type: String,
+        required: true
     }
 })
 
