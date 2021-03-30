@@ -1,0 +1,27 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.page-divider {
+  position: relative;
+  width: 100vw;
+  height: 50vh;
+}
+
+.page-divider::before {
+  background: url("../assets/page-divider.png") center bottom;
+  background-size: cover;
+  content: "";
+  height: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.api-endpoint {
+  /* background-color: red; */
+  @apply bg-gray-300 ml-2;
+}
