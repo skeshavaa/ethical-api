@@ -1,6 +1,7 @@
 const express = require('express');
 const Item = require('../models/items');
 const router = express.Router();
+const uniqid = require('uniqid');
 
 
 // Route Get Data
@@ -19,18 +20,33 @@ router.get('/getAll', (req, res) => {
     console.log('Ethical data');
 
 });
+// {
+//     token
+//     id
+//     data[
+//         {},
+//         {
 
-router.post('/addData', (req,res) => {
-    Item.findOne({token:req.body.token, _id:req.body._id}, (err,doc)=> {
-        const arr = [];
-        if(doc){
-            return res.json(doc.data)
-        }else{
-            console.log("not matched"); 
-            return res.send('NOT MATCHED')
-        }
+//         }
+//     ]
+// }
+router.post('/addData', async(req,res) => {
+    var hash = uniqid();
+    var addData ={
+        ...req.body.data,
+        hash:hash
+    }
+    console.log(addData)
+    let oldData = await Item.findOne({token:req.body.token,_id:req.body._id})
+    // console.log(oldData)
+    let newData = await Item.findOneAndUpdate({token:req.body.token, _id:req.body._id},{data:[...oldData.data,addData]},{
+        new:true
     })
+    console.log(newData)
+    return res.json(newData)
 })
-
+// route jisse form banega blank data
+// route jisse form ka sara data access kr payga
+// post data
 
 module.exports = router;
