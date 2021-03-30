@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const items = require('./routes/api')
+const items = require('./models/items')
+const apiRoute = require('./routes/api')
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ mongoose
 
 
 app.use('/api/items', items)
+app.use('/',apiRoute)
 
 app.listen(port, () => console.log(`Server started on ${port}`));
 
