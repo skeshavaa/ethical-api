@@ -20,16 +20,6 @@ router.get('/getAll', (req, res) => {
     console.log('Ethical data');
 
 });
-// {
-//     token
-//     id
-//     data[
-//         {},
-//         {
-
-//         }
-//     ]
-// }
 router.post('/addData', async(req,res) => {
     var hash = uniqid();
     var addData ={
@@ -45,8 +35,8 @@ router.post('/addData', async(req,res) => {
     console.log(newData)
     return res.json(newData)
 })
-// route jisse form banega blank data
-// route jisse form ka sara data access kr payga
-// post data
+// route to create a new form 
+// route to access all the data /getAll
+// post data /addData
 
 module.exports = router;
