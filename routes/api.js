@@ -3,6 +3,7 @@ const express = require('express');
 const Item = require('../models/items');
 const router = express.Router();
 const uniqid = require('uniqid');
+const hash = require('object-hash')
 
 router.get('/getAll', (req, res) => {
     Item.findOne({token:req.body.token, _id:req.body._id}, (err,doc)=>{
