@@ -19,10 +19,10 @@ router.get('/getAll', (req, res) => {
 
 });
 router.post('/addData', async(req,res) => {
-    var hash = uniqid();
+    var userId = uniqid();
     var addData ={
         ...req.body.data,
-        hash:hash
+        userId:userId
     }
     console.log(addData)
     let oldData = await Item.findOne({token:req.body.token,_id:req.body._id})
