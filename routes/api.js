@@ -59,4 +59,24 @@ router.delete('/DeleteForm', (req, res) => {
     }).catch(() => res.json({msg: "Form not found!"}))
 })
 
+router.delete('/delete-user/:userId', (req,res) => {
+    var userFormData;
+    Item.findOne({token:req.body.token, _id:req.body._id}, async(err,doc)=>{
+        if(doc){
+            userFormData=doc.data;
+            var filteredData = userFormData.filter(item=>item.userId!=req.params.userId)
+            var result = await Item.findOneAndUpdate({token:req.body.token, _id:req.body._id},{data:filteredData},{new:true})
+            console.log(result)
+            res.json(result)
+        }
+        else{
+            console.log("not matched"); 
+        }
+    })
+    // console.log(currentUser)     
+    // "_id":"605ffed0d5ee320b30442012",
+    // "token":"a3496e5c314933022e4194e0c3f141ad3a21c4d1",
+    // "userId":"16x8mmckmxiqqun"
+})
+// user -> email aur name -> hash(email+name) -> 4letters + email + 4digit secret pin
 module.exports = router;
