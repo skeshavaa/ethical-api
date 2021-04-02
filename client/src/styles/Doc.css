@@ -1,0 +1,42 @@
+.requestContainer{
+    margin-bottom: 60px;
+}
+
+.url{
+    display: flex;
+    padding-bottom: 20px;;
+}
+
+.url h1, a{
+    font-family: "Comfortaa";
+}
+
+.url h1{
+    padding: 10px 20px 10px 0px;
+}
+
+.url a{
+    background-color: #E6E6E6;
+    padding: 10px;
+}
+
+.requestBody h1{
+    font-family: "Comfortaa";
+    padding-bottom: 10px;
+}
+
+.request{
+    background-color: #E6E6E6;
+    padding: 30px 20px 30px 20px;
+    margin-bottom: 20px;
+}
+
+.responseBody h1{
+    font-family: "Comfortaa";
+    padding-bottom: 10px;
+}
+
+.response{
+    background-color: #E6E6E6;
+    padding: 30px 20px 30px 20px;
+}

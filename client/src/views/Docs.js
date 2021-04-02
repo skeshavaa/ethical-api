@@ -1,4 +1,5 @@
 import data from '../assets/Requests.json'
+import Doc from '../components/Doc'
 
 function Docs() {
   return (
@@ -6,7 +7,7 @@ function Docs() {
       <section className="flex flex-col justify-between my-10">
         {data.endpoints.map((route) => {
           return(
-            <h1>sdf</h1>
+            <Doc doc={route}/>
           )
         })}
       </section>
