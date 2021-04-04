@@ -11,9 +11,11 @@ const Doc = (props) => {
                 <h1>{props.doc.type}</h1>
                 <a>{props.doc.endpoint}</a>
             </div>
+            <h2>{props.doc.desc}</h2>
             {props.doc.requestBody ?
                 <div className="requestBody">
                     <h1>Request Body:</h1>
+                    
                     <div className="request">
                         <JSONPretty id="json-pretty" data={props.doc.requestBody}>
 

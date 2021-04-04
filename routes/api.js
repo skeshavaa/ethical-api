@@ -19,18 +19,17 @@ router.get('/getAll', (req, res) => {
 
 });
 router.post('/addData', async(req,res) => {
-    var userId = uniqid();
+    var userID = uniqid();
     var addData ={
         ...req.body.data,
-        userId:userId
+        userID:userID
     }
     console.log(addData)
-    let oldData = await Item.findOne({token:req.body.token,_id:req.body._id})
+    let oldData = await Item.findOne({token:req.body.token,_id:req.body.formID})
     // console.log(oldData)
-    let newData = await Item.findOneAndUpdate({token:req.body.token, _id:req.body._id},{data:[...oldData.data,addData]},{
+    let newData = await Item.findOneAndUpdate({token:req.body.token, _id:req.body.formID},{data:[...oldData.data,addData]},{
         new:true
     })
-    console.log(newData)
     return res.json(newData)
 })
 // route to create a new form 
@@ -59,18 +58,18 @@ router.delete('/DeleteForm', (req, res) => {
     }).catch(() => res.json({msg: "Form not found!"}))
 })
 
-router.delete('/delete-user/:userId', (req,res) => {
+router.delete('/deleteUser/:userID', (req,res) => {
     var userFormData;
-    Item.findOne({token:req.body.token, _id:req.body._id}, async(err,doc)=>{
+    Item.findById(req.body.formID).then((err,doc)=>{
         if(doc){
             userFormData=doc.data;
-            var filteredData = userFormData.filter(item=>item.userId!=req.params.userId)
-            var result = await Item.findOneAndUpdate({token:req.body.token, _id:req.body._id},{data:filteredData},{new:true})
+            var filteredData = userFormData.filter(item=>item.userID!=req.params.userID)
+            var result = await Item.findByIdAndUpdate(req.body.formID,{data:filteredData},{new:true})
             console.log(result)
-            res.json(result)
+            res.json({msg: "Your information has been deleted!"})
         }
         else{
-            console.log("not matched"); 
+            res.json({msg: "Invalid FormID"})
         }
     })
     // console.log(currentUser)     
