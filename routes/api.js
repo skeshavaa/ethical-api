@@ -15,7 +15,6 @@ router.get('/getAll', (req, res) => {
             console.log("not matched"); 
         }
     })
-    console.log('Ethical data');
 
 });
 router.post('/addData', async(req,res) => {
