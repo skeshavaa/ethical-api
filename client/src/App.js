@@ -10,17 +10,19 @@ function App() {
     <Router>
       <div className="flex flex-col mx-0 justify-start h-screen">
         <header className="container min-w-full px-4 flex flex-row justify-end">
-          <Link to='/docs' href="/" className="m-5 text-lg hover:opacity-50">
+          <Link to='/' href="/" className="m-5 text-lg hover:opacity-50">
+            Home
+          </Link>
+          <Link to='/documentation' href="/" className="m-5 text-lg hover:opacity-50">
             Documentation
           </Link>
-          <Link to="/guide" className="m-5 text-lg hover:opacity-50">
-            Get Started
+          <Link to='/documentation' href="/" className="m-5 text-lg hover:opacity-50">
+            Find your data
           </Link>
         </header>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
-          <Route path="/docs" render={() => <Docs/>}/>
-          <Route path="/guide" render={() => <GetStarted/>}/>
+          <Route path="/documentation" render={() => <Docs/>}/>
         </Switch>
       </div>
     </Router>

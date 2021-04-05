@@ -1,4 +1,5 @@
 import landingPageHero from "../assets/landing-page-hero.png";
+import '../styles/Home.css'
 
 function Home() {
   return (
@@ -7,8 +8,8 @@ function Home() {
         className="hero flex flex-col lg:pt-36 md:pt-5"
         style={{ height: "50vh" }}
       >
-        <h1 className="text-4xl mb-10">The BlockChain API</h1>
-        <h3 className="text-xl">
+        <h1 className="title">The Ethical API</h1>
+        <h3 className="title2">
           Control who has your data and when they can use it
         </h3>
       </div>

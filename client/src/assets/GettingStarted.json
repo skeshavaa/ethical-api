@@ -1,0 +1,33 @@
+{
+    "endpoints": [
+        {
+            "type": "POST",
+            "desc": "Use this endpoint to actually create a form!",
+            "endpoint": "/CreateForm",
+            "requestBody": null,
+            "responseBody": {
+                "token": "ExampleTokenHere",
+                "formID": "FormIDHere"
+            }
+        },
+        {
+            "type": "POST",
+            "desc": "Use this endpoint add data to a form",
+            "endpoint": "/addData",
+            "requestBody": {
+                "token": "ExampleTokenHere",
+                "formID": "FormIDHere",
+                "data": {
+                    "name": "example data in here"
+                }
+            },
+            "responseBody": {
+                "token": "ExampleTokenHere",
+                "formID": "FormIDHere",
+                "data": {
+                    "name": "example data in here"
+                }
+            }
+        }
+    ]
+}
